@@ -3,14 +3,13 @@ const { User, Post, Comment } = require('../models');
 // Import the custom middleware
 const withAuth = require('../utils/auth');
 
-// GET all galleries for homepage
-router.get('/', async (req, res) => {
+// GET all galleries for user
+router.get('/', withAuth, async (req, res) => {
   try {
     const dbPostData = await Post.findAll({
-      include: [
+      where: [
         {
-          model: User,
-          attributes: ['username'],
+          user_id: req.session.user_id,
         },
       ],
     });
@@ -19,37 +18,44 @@ router.get('/', async (req, res) => {
       post.get({ plain: true })
     );
 
-    res.render('homepage', {
+    res.render('user-posts', {
       allPosts
     });
   } catch (err) {
     console.log(err);
-    res.status(500).json(err);
+    res.redirect('login');
   }
 });
 
-// GET one gallery
-// Use the custom middleware before allowing the user to access the gallery
-router.get('/post/:id', async (req, res) => {
+// update post for user
+router.get('/update/:id', withAuth, async (req, res) => {
   try {
     const dbPostData = await Post.findByPk(req.params.id, {
       include: [
-        Comment,
         {
           model: User,
-          attributes: [
-            'username',
-          ],
+          attributes: ['username'],
         },
       ],
     });
 
-    const post = dbPostData.get({ plain: true });
-    res.render('post', { post });
+    if (!dbPostData) {
+      res.status(404).json(err).end();      
+    } else {
+       const post = dbPostData.get({ plain: true });
+       res.render('update-post', { post })
+    };
   } catch (err) {
     console.log(err);
-    res.status(500).json(err);
+    res.redirect('login');
   }
+});
+
+
+// GET one gallery
+// Use the custom middleware before allowing the user to access the gallery
+router.get('/write', withAuth, (req, res) => {
+  res.render('write-post');
 });
 
 router.get('/login', (req, res) => {
