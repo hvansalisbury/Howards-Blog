@@ -1,0 +1,20 @@
+{{#each allPosts}}
+<section class="post">
+  <div class="post-details">
+    <div class="post-header">
+      <a href="/post/{{id}}">
+        <h3 post-id="{{id}}">{{title}}</h3>
+        <p>{{format_date createdAt}} {{format_time createdAt}}</p>
+      </a>
+    </div>
+    <div class="post-body">
+      <p>{{post_text}}</p>
+      <p class="post-username">By: {{user.username}}</p>
+    </div>
+    {{#if userIdMatch}}
+    <a href="/dashboard/update/{{id}}"><button>edit post</button></a>
+    {{/if}}
+  </div>
+</section>
+{{/each}}
+<script src="../../js/all-posts.js"></script>

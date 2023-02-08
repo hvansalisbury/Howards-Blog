@@ -4,11 +4,12 @@ const withAuth = require('../../utils/auth');
 
 // CREATE new post
 router.post('/', async (req, res) => {
+  console.log(req.body)
   try {
     const dbPostData = await Post.create({
-      title: req.body.title,
-      post_text: req.body.post_text,
-      user_id: req.body.user_id,
+      title: req.body.postTitle,
+      post_text: req.body.postText,
+      user_id: req.session.user_id,
     });
     res.json(dbPostData);
   } catch (err) {
@@ -20,11 +21,11 @@ router.post('/', async (req, res) => {
 // Update
 router.put('/:id', withAuth, async (req, res) => {
   try {
+    console.log(req.body)
     const dbPostData = await Post.update(
       {
-        title: req.body.title,
-        post_text: req.body.post_text,
-        user_id: req.body.user_id,
+        title: req.body.postTitle,
+        post_text: req.body.postText,
       },
       {
         where: {
@@ -32,6 +33,7 @@ router.put('/:id', withAuth, async (req, res) => {
         },
       }
     );
+    console.log(dbPostData)
     if (!dbPostData) {
       res.status(400).json({ message: "Could not update post!" });
       return;
@@ -45,13 +47,8 @@ router.put('/:id', withAuth, async (req, res) => {
 // Delete
 router.delete('/:id', withAuth, async (req, res) => {
   try {
-    const dbPostData = await Post.destroy(
-      {
-        where: {
-          id: req.params.id,
-        },
-      }
-    );
+    console.log(req.params.id)
+    const dbPostData = await Post.destroy({ where: { id: req.params.id } });
     if (!dbPostData) {
       res.status(400).json({ message: "Could not delete post!" });
       return;
@@ -61,6 +58,5 @@ router.delete('/:id', withAuth, async (req, res) => {
     res.status(500).json(err);
   }
 });
-
 
 module.exports = router;
