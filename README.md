@@ -22,8 +22,8 @@ Just go to the deployed site, and start blogging.
 
 ## Links
 
-[Github Repository](https://github.com/hvansalisbury)
-[Deployed Site](https://github.com/hvansalisbury)
+- [Github Repository](https://github.com/hvansalisbury/Howards-Blog)
+- [Deployed Site](https://howards-blog.herokuapp.com/)
 
 ## Usage
 
