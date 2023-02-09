@@ -109,4 +109,22 @@ router.put('/update', async (req, res) => {
   }
 });
 
+router.delete('/', withAuth, async (req, res) => {
+  try {
+    await User.destroy({where: {id: req.session.user_id}});
+
+    if (req.session.loggedIn) {
+      req.session.destroy(() => {
+        res.status(204).end();
+      });
+    } else {
+      res.status(404).end();
+    }
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
+
 module.exports = router;

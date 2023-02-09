@@ -13,6 +13,7 @@ router.get('/posts/', withAuth, async (req, res) => {
   try {
     const dbPostData = await Post.findAll({
       where: { user_id: req.session.user_id },
+      order: [['createdAt', 'DESC']],
       include: [{
         model: User,
         attributes: ['username']
@@ -32,6 +33,7 @@ router.get('/comments/', withAuth, async (req, res) => {
   try {
     const dbCommentData = await Comment.findAll({
       where: { user_id: req.session.user_id },
+      order: [['createdAt', 'DESC']],
       include: [{
         model: User,
         attributes: ['username']
@@ -91,6 +93,25 @@ router.get('/profile', withAuth, async (req, res) => {
   }
 });
 
+// update comment page for user
+router.get('/update-comment/:id', withAuth, async (req, res) => {
+  try {
+    const dbCommentData = await Comment.findByPk(req.params.id);
+
+    if (!dbCommentData) {
+      res.status(404).json(err).end();
+    } else {
+      const comment = dbCommentData.get({ plain: true });
+      const userIdMatch = comment.user_id === req.session.user_id
+      console.log(comment)
+      console.log(userIdMatch)
+      res.render('update-comment', { comment, userIdMatch, loggedIn: req.session.loggedIn })
+    };
+  } catch (err) {
+    console.log(err);
+    res.redirect('/dashboard');
+  }
+});
 
 // create a new post page
 router.get('/write', withAuth, (req, res) => {

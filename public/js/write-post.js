@@ -1,4 +1,3 @@
-
 const writePostFormHandler = async (event) => {
   const postTitle = document.querySelector('#post-title-input').value.trim();
   const postText = document.querySelector('#post-text-input').value.trim();

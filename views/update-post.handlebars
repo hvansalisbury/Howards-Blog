@@ -1,5 +1,5 @@
 {{#if userIdMatch}}
-<section class="update-post">
+<section class="login-card update-post">
   <form id="update-post-form" post-id="{{post.id}}" user-id="{{post.user_id}}">
     <div class="form-line">
       <label for="post-title-input" class="form-category">title:</label>
@@ -7,13 +7,13 @@
     </div>
     <div class="form-line">
       <label for="post-text-input" class="form-category">content:</label>
-      <input class="form-input" type="text" id="post-text-input" placeholder="content" value="{{post.post_text}}" />
+      <textarea class="form-input form-input-content" type="text" id="post-text-input" placeholder="content">{{post.post_text}}</textarea>
     </div>
-    <div class="form-btn-box">
+    <div class="form-line form-line-btn">
       <button class="form-btn" id="update-submit-btn">submit</button>
     </div>
   </form>
-  <div class="form-btn-box">
+  <div class="form-line form-line-btn">
     <button class="form-btn" id="delete-post-btn">delete</button>
   </div>
 </section>

@@ -7,10 +7,10 @@ const withAuth = require('../../utils/auth');
 router.post('/', withAuth, async (req, res) => {
   try {
     const dbCommentData = await Comment.create({
-      title: req.body.title,
-      comment_text: req.body.comment_text,
-      post_id: req.body.post_id,
-      user_id: req.body.user_id,
+      title: req.body.commentTitle,
+      comment_text: req.body.commentText,
+      post_id: req.body.postId,
+      user_id: req.session.user_id,
     });
 
     res.json(dbCommentData);
@@ -19,4 +19,31 @@ router.post('/', withAuth, async (req, res) => {
     res.status(500).json(err);
   }
 });
+
+// Update
+router.put('/:id', withAuth, async (req, res) => {
+  try {
+    console.log(req.body)
+    const dbCommentData = await Comment.update(
+      {
+        title: req.body.commentTitle,
+        comment_text: req.body.commentText,
+      },
+      {
+        where: {
+          id: req.params.id,
+        },
+      }
+    );
+    console.log(dbCommentData)
+    if (!dbCommentData) {
+      res.status(400).json({ message: "Could not update comment!" });
+      return;
+    }
+    res.status(200).json({ message: "Comment updated successfully!" });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 module.exports = router;

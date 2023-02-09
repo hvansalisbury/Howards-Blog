@@ -36,7 +36,7 @@ header h1 {
 nav {
   display: flex;
   justify-content: flex-end;
-  width: 100vw;
+  width: 100%;
   background-color: tan;
   height: 50px;
   align-items: center;
@@ -65,7 +65,7 @@ nav a:hover {
 main {
   display: flex;
   flex-direction: column;
-  width: 100vw;
+  width: 100%;
 }
 
 .blog {
@@ -106,13 +106,13 @@ main {
 .comment-box {
   display: flex;
   flex-direction: column;
-  width: 100vw;
+  width: 100%;
   min-height: 20vh;
 }
 
 .post-details,
 .comment-details {
-  margin: 10px 20px;
+  margin: 20px 20px 0px 20px;
 }
 
 .post-header,
@@ -150,12 +150,12 @@ main {
 }
 
 .post-username,
-.comment-username {
+.username-section {
   border-top: 1px solid grey;
 }
 
 .comment-details {
-  padding-left: 50px;
+  padding-left: 60px;
 }
 
 .comment-header {
@@ -164,4 +164,94 @@ main {
 
 .comment-body {
   background-color: rgb(233, 210, 178);
+}
+
+.username-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.edit-post-btn,
+.edit-comment-btn {
+  margin-right: 10px;
+}
+
+.edit-post-btn button:hover,
+.edit-comment-btn button:hover,
+.form-line-btn button:hover,
+.login-card p a:hover,
+.post-header a:hover {
+  background-color: darkslategray;
+  color: whitesmoke;
+  transition: .4s;
+  cursor: pointer;
+}
+
+.post-fix {
+  min-height: 0px;
+}
+
+.comment-fix {
+  margin-top: 0px;
+}
+
+.login-card {
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
+  width: 50%;
+  padding: 20px;
+  border: 1px solid black;
+  border-radius: 7px;
+  align-items: center;
+}
+
+.page-title {
+  padding-bottom: 20px;
+}
+
+.signup-form,
+.login-form,
+#update-profile-form,
+#update-post-form,
+#update-comment-form,
+#write-post-form {
+  width: 80%;
+}
+
+.form-line {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.form-line label {
+  width: 25%;
+}
+
+.form-line input {
+  width: 75%;
+}
+
+.form-line-btn {
+  justify-content: center;
+}
+
+.login-card p a {
+  text-decoration: none;
+}
+
+.form-input-content {
+  height: 20vh;
+  align-items: flex-start;
+  width: 75%;
+}
+
+.center {
+  justify-content: center;
+  align-items: center;
+}
+
+.hidden {
+  display: none;
 }

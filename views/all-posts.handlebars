@@ -9,11 +9,13 @@
     </div>
     <div class="post-body">
       <p>{{post_text}}</p>
-      <p class="post-username">By: {{user.username}}</p>
+      <div class="username-section">
+        <p class="post-username">- {{user.username}}</p>
+        {{#if userIdMatch}}
+        <a class="edit-post-btn" href="/dashboard/update/{{id}}"><button>edit post</button></a>
+        {{/if}}
+      </div>
     </div>
-    {{#if userIdMatch}}
-    <a href="/dashboard/update/{{id}}"><button>edit post</button></a>
-    {{/if}}
   </div>
 </section>
 {{/each}}

@@ -72,6 +72,45 @@ router.get('/post/:id', async (req, res) => {
   }
 });
 
+// write a comment on a post
+router.get('/post/:id/add-comment', async (req, res) => {
+  try {
+    // const dbPostData = await Post.findByPk(req.params.id, {
+    //   include: [
+    //     {
+    //       model: Comment,
+    //       include: [
+    //         {
+    //           model: User,
+    //           attributes: [
+    //             'username',
+    //           ],
+    //         }
+    //       ]
+    //     },
+    //     {
+    //       model: User,
+    //       attributes: [
+    //         'username',
+    //       ],
+    //     },
+    //   ],
+    // });
+    // const post = dbPostData.get({ plain: true });
+    // const userIdMatch = post.user_id === req.session.user_id
+    // console.log(post.comments)
+    // for (let i = 0; i < post.comments.length; i++) {
+    //   const userIdCommentMatch = post.comments[i].user_id === req.session.user_id
+    //   post.comments[i].commentUserIdMatch = userIdCommentMatch
+    // }
+    // console.log(post)
+    res.render('add-comment', {id: req.params.id, loggedIn: req.session.loggedIn });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
 router.get('/login', (req, res) => {
   if (req.session.loggedIn) {
     res.redirect('/dashboard');

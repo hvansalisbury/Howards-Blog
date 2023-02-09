@@ -1,4 +1,5 @@
-<section class="update-profile">
+<section class="login-card update-profile">
+  <h2 class="page-title">Update Your Profile</h2>
   <form id="update-profile-form">
     <div class="form-line">
       <label for="username-input" class="form-category">username:</label>
@@ -16,18 +17,20 @@
       <div class="form-line">
         <label for="password-input" class="form-category">new password:</label>
         <input class="form-input" type="password" id="password-input" placeholder="your new password" />
-        <div id="password-match-message"></div>
       </div>
+    </div>
+    <div class="form-line hidden center" id="message-box">
+      <div id="password-match-message"></div>
     </div>
     <div class="form-line">
       <label for="old-password-input" class="form-category">old password:</label>
       <input class="form-input" type="password" id="old-password-input" placeholder="your password" />
     </div>
-    <div class="form-btn-box">
+    <div class="form-btn-box form-line form-line-btn">
       <button class="form-btn" id="update-profile-submit-btn">submit</button>
     </div>
   </form>
-  <div class="form-btn-box">
+  <div class="form-btn-box form-line-btn">
     <button class="form-btn" id="delete-profile-btn">delete</button>
   </div>
 </section>

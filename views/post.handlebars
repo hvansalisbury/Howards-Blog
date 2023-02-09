@@ -1,18 +1,20 @@
 <section class="post">
   <div class="post-details">
     <div class="post-header">
-      <a>
-        <h3 post-id="{{id}}">{{post.title}}</h3>
+      <a href="/post/{{post.id}}">
+        <h3 post-id="{{post.id}}">{{post.title}}</h3>
         <p>{{format_date post.createdAt}} {{format_time post.createdAt}}</p>
       </a>
     </div>
     <div class="post-body">
       <p>{{post.post_text}}</p>
-      <p class="post-username">- {{post.user.username}}</p>
+      <div class="username-section">
+        <p class="post-username">- {{post.user.username}}</p>
+        {{#if userIdMatch}}
+        <a class="edit-post-btn" href="/dashboard/update/{{post.id}}"><button>edit post</button></a>
+        {{/if}}
+      </div>
     </div>
-    {{#if userIdMatch}}
-    <a href="/dashboard/update/{{post.id}}"><button>edit post</button></a>
-    {{/if}}
   </div>
 </section>
 {{#each post.comments}}
@@ -26,11 +28,13 @@
     </div>
     <div class="comment-body">
       <p>{{comment_text}}</p>
-      <p class="comment-username">- {{user.username}}</p>
+      <div class="username-section">
+        <p class="comment-username">- {{user.username}}</p>
+        {{#if commentUserIdMatch}}
+        <a class="edit-comment-btn" href="/dashboard/update-comment/{{id}}"><button>edit comment</button></a>
+        {{/if}}
+      </div>
     </div>
-  {{#if commentUserIdMatch}}
-  <a href="/update-comment/{{id}}"><button>edit comment</button></a>
-  {{/if}}
   </div>
 </div>
 {{/each}}
