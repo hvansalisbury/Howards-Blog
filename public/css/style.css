@@ -181,7 +181,8 @@ main {
 .edit-comment-btn button:hover,
 .form-line-btn button:hover,
 .login-card p a:hover,
-.post-header a:hover {
+.post-header a:hover,
+.add-comment-btn button:hover {
   background-color: darkslategray;
   color: whitesmoke;
   transition: .4s;

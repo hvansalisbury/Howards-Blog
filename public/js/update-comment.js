@@ -1,9 +1,8 @@
-
+const commentId = document.querySelector('#update-comment-form').getAttribute('comment-id')
 const updateCommentFormHandler = async (event) => {
   event.preventDefault();
   const commentTitle = document.querySelector('#comment-title-input').value.trim();
   const commentText = document.querySelector('#comment-text-input').value.trim();
-  const commentId = document.querySelector('#update-comment-form').getAttribute('comment-id')
   
   if (commentTitle && commentText) {
     const response = await fetch(`/api/comment/${commentId}`, {
@@ -21,7 +20,7 @@ const updateCommentFormHandler = async (event) => {
 };
 // delete post function
 const deleteComment = async function () {
-  await fetch(`/api/comment/${postId}`, {
+  await fetch(`/api/comment/${commentId}`, {
     method: "DELETE",
   })
     .then(async (response) => await response.json())

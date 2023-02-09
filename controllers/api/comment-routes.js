@@ -46,4 +46,18 @@ router.put('/:id', withAuth, async (req, res) => {
   }
 });
 
+// Delete
+router.delete('/:id', withAuth, async (req, res) => {
+  try {
+    const dbCommentData = await Comment.destroy({ where: { id: req.params.id } });
+    if (!dbCommentData) {
+      res.status(400).json({ message: "Could not delete comment!" });
+      return;
+    }
+    res.status(200).json({ message: "Comment deleted successfully!" });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 module.exports = router;

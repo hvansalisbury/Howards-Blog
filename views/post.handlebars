@@ -10,9 +10,12 @@
       <p>{{post.post_text}}</p>
       <div class="username-section">
         <p class="post-username">- {{post.user.username}}</p>
-        {{#if userIdMatch}}
-        <a class="edit-post-btn" href="/dashboard/update/{{post.id}}"><button>edit post</button></a>
-        {{/if}}
+        <div>
+          <a class="add-comment-btn" href="/post/{{post.id}}/add-comment/"><button>add comment</button></a>
+          {{#if userIdMatch}}
+          <a class="edit-post-btn" href="/dashboard/update/{{post.id}}"><button>edit post</button></a>
+          {{/if}}
+        </div>
       </div>
     </div>
   </div>
