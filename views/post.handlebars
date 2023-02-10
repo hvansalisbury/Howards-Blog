@@ -11,9 +11,9 @@
       <div class="username-section">
         <p class="post-username">- {{post.user.username}}</p>
         <div>
-          <a class="add-comment-btn" href="/post/{{post.id}}/add-comment/"><button>add comment</button></a>
+          <a class="add-comment-btn" {{#if loggedIn}} href="/post/{{post.id}}/add-comment/" {{else}} href="/login/" {{/if}}><button>add comment</button></a>
           {{#if userIdMatch}}
-          <a class="edit-post-btn" href="/dashboard/update/{{post.id}}"><button>edit post</button></a>
+          <a class="edit-post-btn" {{#if loggedIn}} href="/dashboard/update/{{post.id}}" {{else}} href="/login/" {{/if}}><button>edit post</button></a>
           {{/if}}
         </div>
       </div>
@@ -34,7 +34,7 @@
       <div class="username-section">
         <p class="comment-username">- {{user.username}}</p>
         {{#if commentUserIdMatch}}
-        <a class="edit-comment-btn" href="/dashboard/update-comment/{{id}}"><button>edit comment</button></a>
+        <a class="edit-comment-btn" {{#if loggedIn}} href="/dashboard/update-comment/{{id}}" {{else}} href="/login/" {{/if}}"><button>edit comment</button></a>
         {{/if}}
       </div>
     </div>
