@@ -1,4 +1,4 @@
-
+// function to handle a request to update a post 
 const updatePostFormHandler = async (event) => {
   event.preventDefault();
   const postTitle = document.querySelector('#post-title-input').value.trim();
@@ -30,7 +30,7 @@ const deletePost = async function () {
       location.href = `/dashboard/`;
     });
 };
-// update post submission
+// event listener for update post submission
 document
   .querySelector('#update-post-form')
   .addEventListener('submit', updatePostFormHandler);

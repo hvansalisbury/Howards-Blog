@@ -1,4 +1,4 @@
-
+// code to handle when a comment is added
 const addCommentFormHandler = async (event) => {
   event.preventDefault();
   const commentTitle = document.querySelector('#comment-title-input').value.trim();
@@ -19,7 +19,7 @@ const addCommentFormHandler = async (event) => {
     }
   }
 };
-// add comment to post
+// event listener for comment form submission
 document
   .querySelector('#update-comment-form')
   .addEventListener('submit', addCommentFormHandler);

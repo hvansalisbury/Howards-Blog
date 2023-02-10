@@ -4,7 +4,7 @@ const { User, Post, Comment } = require('../models')
 const postData = require('./postData.json');
 const commentData = require('./commentData.json');
 const userData = require('./userData.json');
-
+// function to seed all the data from the json files in seeds folder
 const seedAll = async () => {
   await sequelize.sync({ force: true });
 

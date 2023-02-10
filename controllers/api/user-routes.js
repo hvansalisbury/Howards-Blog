@@ -59,7 +59,7 @@ router.post('/login', async (req, res) => {
 });
 
 // Logout
-router.post('/logout', (req, res) => {
+router.post('/logout', withAuth, (req, res) => {
   if (req.session.loggedIn) {
     req.session.destroy(() => {
       res.status(204).end();
@@ -69,7 +69,7 @@ router.post('/logout', (req, res) => {
   }
 });
 // update user profile
-router.put('/update', async (req, res) => {
+router.put('/update', withAuth, async (req, res) => {
   try {
     console.log(req.body)
     console.log(req.session.user_id)
@@ -108,7 +108,7 @@ router.put('/update', async (req, res) => {
     res.status(500).json(err);
   }
 });
-
+// delete user profile
 router.delete('/', withAuth, async (req, res) => {
   try {
     await User.destroy({where: {id: req.session.user_id}});

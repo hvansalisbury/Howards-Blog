@@ -1,3 +1,4 @@
+// function to handle request to write post
 const writePostFormHandler = async (event) => {
   const postTitle = document.querySelector('#post-title-input').value.trim();
   const postText = document.querySelector('#post-text-input').value.trim();
@@ -17,7 +18,7 @@ const writePostFormHandler = async (event) => {
     }
   }
 };
-
+// event listener to for the write post form submission
 document
   .querySelector('#write-post-form')
   .addEventListener('submit', writePostFormHandler);

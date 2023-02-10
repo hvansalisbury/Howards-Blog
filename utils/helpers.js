@@ -1,3 +1,4 @@
+// function to change the date and time format to display on posts and comments
 module.exports = {
   format_time: (date) => {
     return date.toLocaleTimeString();

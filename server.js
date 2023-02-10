@@ -1,3 +1,4 @@
+// file to start the server for this app
 const path = require('path');
 const express = require('express');
 const session = require('express-session');
@@ -10,7 +11,7 @@ const helpers = require('./utils/helpers');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
-
+// session data, time limit set for 1 hour
 const sess = {
   secret: 'Super secret secret',
   cookie: {
@@ -42,7 +43,7 @@ app.use(routes);
 sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => console.log(`Now listening on http://localhost:${PORT}`));
 });
-
+// function to automatically load partials
 module.exports = function () {
   var loadJS = function (user, options) {
     var partialsDir = __dirname + '/../loadjs';

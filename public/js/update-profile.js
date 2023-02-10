@@ -1,4 +1,4 @@
-
+// function to handle request to update profile
 const updateProfileFormHandler = async (event) => {
   event.preventDefault();
 
@@ -27,7 +27,7 @@ const updateProfileFormHandler = async (event) => {
     }
   }
 };
-// check if new passwords match
+// function to check if new passwords match
 const checkPasswordMatch = async (event) => {
   const element = event.target;
   document.querySelector('#message-box').classList.remove('hidden')
@@ -42,12 +42,10 @@ const checkPasswordMatch = async (event) => {
     )
   }
 }
-// delete profile
+// delete profile function
 const deleteProfile = async (event) => {
   const response = await fetch(`/api/user/`, {
     method: 'DELETE',
-    // body: JSON.stringify({ username, email, password, oldPassword }),
-    // headers: { 'Content-Type': 'application/json' },
   });
 
   if (response.ok) {
@@ -56,13 +54,13 @@ const deleteProfile = async (event) => {
     alert('Failed to delete.');
   }
 }
-// update post submission
+// update post submission event listener
 document
   .querySelector('#update-profile-form')
   .addEventListener('submit', updateProfileFormHandler);
-// check if new passwords match
+// check if new passwords match event listener
 document.querySelector('#password-check-fields')
   .addEventListener('keyup', checkPasswordMatch)
-// delete profile button
+// delete profile button event listener
 document.querySelector('#delete-profile-btn')
   .addEventListener('click', deleteProfile)

@@ -1,4 +1,6 @@
+// pull the comment it from the form
 const commentId = document.querySelector('#update-comment-form').getAttribute('comment-id')
+// function to handle when a comment gets updated
 const updateCommentFormHandler = async (event) => {
   event.preventDefault();
   const commentTitle = document.querySelector('#comment-title-input').value.trim();
@@ -28,7 +30,7 @@ const deleteComment = async function () {
       location.href = `/dashboard/`;
     });
 };
-// update post submission
+// event listener for update post submission
 document
   .querySelector('#update-comment-form')
   .addEventListener('submit', updateCommentFormHandler);

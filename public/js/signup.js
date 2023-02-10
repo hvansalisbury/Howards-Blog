@@ -1,3 +1,4 @@
+// function to handle when a new user requests to sign up
 const signupFormHandler = async (event) => {
   event.preventDefault();
 
@@ -19,7 +20,7 @@ const signupFormHandler = async (event) => {
     }
   }
 };
-
+// event listener for the sign up form
 document
   .querySelector('.signup-form')
   .addEventListener('submit', signupFormHandler);
