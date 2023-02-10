@@ -16,7 +16,7 @@
       <p>{{comment_text}}</p>
       <div class="username-section">
         <p>- {{user.username}}</p>
-        <a class="edit-comment-btn" {{#if loggedIn}} href="/dashboard/update-comment/{{id}}" {{else}} href="/login/" {{/if}}><button>edit comment</button></a>
+        <a class="edit-comment-btn" href="/dashboard/update-comment/{{id}}"><button>edit comment</button></a>
       </div>
     </div>
   </div>

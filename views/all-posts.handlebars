@@ -12,9 +12,9 @@
       <div class="username-section">
         <p class="post-username">- {{user.username}}</p>
         <div>
-          <a class="add-comment-btn" {{#if loggedIn}} href="/post/{{id}}/add-comment/" {{else}} href="/login/" {{/if}}><button>add comment</button></a>
+          <a class="add-comment-btn" href="/post/{{id}}/add-comment/"><button>add comment</button></a>
           {{#if userIdMatch}}
-          <a class="edit-post-btn" {{#if loggedIn}} href="/dashboard/update/{{id}}" {{else}} href="/login/" {{/if}}><button>edit post</button></a>
+          <a class="edit-post-btn" href="/dashboard/update/{{id}}"><button>edit post</button></a>
           {{/if}}
         </div>
       </div>
