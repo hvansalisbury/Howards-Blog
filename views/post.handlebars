@@ -34,11 +34,10 @@
       <div class="username-section">
         <p class="comment-username">- {{user.username}}</p>
         {{#if commentUserIdMatch}}
-        <a class="edit-comment-btn" {{#if loggedIn}} href="/dashboard/update-comment/{{id}}" {{else}} href="/login/" {{/if}}"><button>edit comment</button></a>
+        <a class="edit-comment-btn" href="/dashboard/update-comment/{{id}}"><button>edit comment</button></a>
         {{/if}}
       </div>
     </div>
   </div>
 </div>
 {{/each}}
-<script src="../../js/post.js"></script>

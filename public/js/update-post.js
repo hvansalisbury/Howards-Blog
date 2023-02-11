@@ -1,9 +1,9 @@
+const postId = document.querySelector('#update-post-form').getAttribute('post-id')
 // function to handle a request to update a post 
 const updatePostFormHandler = async (event) => {
   event.preventDefault();
   const postTitle = document.querySelector('#post-title-input').value.trim();
   const postText = document.querySelector('#post-text-input').value.trim();
-  const postId = document.querySelector('#update-post-form').getAttribute('post-id')
 console.log(postTitle)
 console.log(postText)
   if (postTitle && postText) {
